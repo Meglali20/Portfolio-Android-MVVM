@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="5dp"
+    app:cardCornerRadius="15dp"
+    app:cardBackgroundColor="?attr/colorSecondaryContainer"
+
+    tools:ignore="HardcodedText">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:layout_margin="0dp">
+
+        <LinearLayout
+            android:id="@+id/projectTitleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:id="@+id/projectIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_launcher_round"
+                android:transitionName="projectIconTransition"
+                tools:ignore="ContentDescription" />
+
+
+            <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                android:id="@+id/projectTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/jet_brains_mono_bold"
+                android:text="Project Title"
+                android:textColor="?attr/colorOnSecondaryContainer"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/bannerImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/projectTitleLayout"
+            android:scaleType="centerCrop"
+            android:minHeight="225dp"
+            android:src="@drawable/ic_launcher_background"
+            app:riv_corner_radius="25dp"
+            tools:ignore="ContentDescription" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

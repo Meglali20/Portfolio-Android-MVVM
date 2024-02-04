@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loadingLayout"
+    android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loadingIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="visible"
+        app:trackCornerRadius="5dp" />
+
+
+    <LinearLayout
+        android:id="@+id/errorContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+            android:id="@+id/errorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/jet_brains_mono_bold"
+            android:text="@string/errorMessage"
+            android:textColor="?attr/colorError"
+            app:autoAnimate="true" />
+
+        <LinearLayout
+            android:id="@+id/retryBtnLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/background_rounded"
+            android:backgroundTint="?attr/colorError"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_refresh"
+                app:tint="?attr/colorOnError"
+                tools:ignore="ContentDescription" />
+
+            <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/jet_brains_mono_bold"
+                android:text="@string/tryAgainBtn"
+                android:textAllCaps="true"
+                android:textColor="?attr/colorOnError"
+                app:autoAnimate="true" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

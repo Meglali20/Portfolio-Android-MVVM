@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fillViewport="true"
+    tools:context=".ui.fragments.PortfolioFragment">
+
+
+    <!-- <com.google.android.material.appbar.AppBarLayout
+         android:id="@+id/appBarLayout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@android:color/transparent">
+
+         <com.google.android.material.appbar.CollapsingToolbarLayout
+             android:id="@+id/collapsingToolbar"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             app:layout_scrollFlags="scroll|exitUntilCollapsed"
+             app:titleEnabled="false">
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical">
+
+                 <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                     android:id="@+id/title"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginHorizontal="10dp"
+                     android:fontFamily="@font/jet_brains_mono_bold"
+                     android:text="@string/portfolioTitle"
+                     android:textSize="25sp"
+                     app:autoAnimate="true" />
+
+                 <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                     android:id="@+id/portfolioDescription"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content" />
+             </LinearLayout>
+         </com.google.android.material.appbar.CollapsingToolbarLayout>
+     </com.google.android.material.appbar.AppBarLayout>-->
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/loadingLayout"
+            layout="@layout/include_loading"
+            tools:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/portfolioContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                android:id="@+id/portfolioDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_project" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</androidx.core.widget.NestedScrollView>

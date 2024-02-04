@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="fragmentContainerStyle" format="reference" />
+    <attr name="layoutStyle" format="reference" />
+    <attr name="glImageSurfaceView" format="reference" />
+    <attr name="wavesSurfaceView" format="reference" />
+
+    <declare-styleable name="GLImageSurfaceView">
+        <attr name="backgroundColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="WavesSurfaceView">
+        <attr name="bannerTextColor" format="color" />
+        <attr name="backgroundColor"/>
+    </declare-styleable>
+
+    <declare-styleable name="ShuffleTextView">
+        <attr name="android:text" />
+    </declare-styleable>
+
+    <declare-styleable name="TextShufflerView">
+        <attr name="android:text" />
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="android:fontFamily" />
+        <attr name="android:textAllCaps" />
+        <attr name="autoAnimate" format="boolean" />
+        <attr name="inScrollView" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="BottomNavigationBar">
+        <attr name="activeItemColor" format="color" />
+        <attr name="inactiveItemColor" format="color" />
+        <attr name="menu" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="reverseMask" format="boolean" />
+        <attr name="roundedCorners">
+            <flag name="topLeft" value="8" />
+            <flag name="topRight" value="4" />
+            <flag name="bottomLeft" value="2" />
+            <flag name="bottomRight" value="1" />
+            <flag name="top" value="12" />
+            <flag name="bottom" value="3" />
+            <flag name="all" value="15" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="PieView">
+        <attr name="pieColorPrimary" format="color" />
+        <attr name="pieColorSecondary" format="color" />
+        <attr name="pieColorTertiary" format="color" />
+        <attr name="pieBorderColor" format="color" />
+    </declare-styleable>
+
+    <attr name="colorPrimary" format="color"/>
+    <attr name="colorOnPrimary" format="color"/>
+    <attr name="colorPrimaryContainer" format="color"/>
+    <attr name="colorOnPrimaryContainer" format="color"/>
+    <attr name="colorPrimaryInverse" format="color"/>
+
+    <attr name="colorSecondary" format="color"/>
+    <attr name="colorOnSecondary" format="color"/>
+    <attr name="colorSecondaryContainer" format="color"/>
+    <attr name="colorOnSecondaryContainer" format="color"/>
+
+    <attr name="colorTertiary" format="color"/>
+    <attr name="colorOnTertiary" format="color"/>
+    <attr name="colorTertiaryContainer" format="color"/>
+    <attr name="colorOnTertiaryContainer" format="color"/>
+
+    <attr name="colorError" format="color"/>
+    <attr name="colorOnError" format="color"/>
+    <attr name="colorErrorContainer" format="color"/>
+    <attr name="colorOnErrorContainer" format="color"/>
+
+    <attr name="colorOutline" format="color"/>
+    <attr name="colorBackground" format="color"/>
+    <attr name="colorOnBackground" format="color"/>
+
+    <attr name="colorSurface" format="color"/>
+    <attr name="colorOnSurface" format="color"/>
+    <attr name="colorSurfaceVariant" format="color"/>
+    <attr name="colorOnSurfaceVariant" format="color"/>
+    <attr name="colorSurfaceInverse" format="color"/>
+
+    <attr name="toolBarColor" format="color"/>
+    <attr name="toolBarTextColor" format="color"/>
+    <attr name="textColor" format="color"/>
+    <attr name="cardColor" format="color"/>
+
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseTheme" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryContainer">@color/primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
+        <item name="android:windowBackground">@color/surface</item>
+        <item name="android:fontFamily">@font/jet_brains_mono_regular</item>
+        <item name="fragmentContainerStyle">@style/fragmentContainerStyle</item>
+        <item name="glImageSurfaceView">@style/glImageSurfaceViewStyle</item>
+        <item name="wavesSurfaceView">@style/wavesSurfaceViewStyle</item>
+        <item name="layoutStyle">@style/layoutStyle</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="fragmentContainerStyle">
+        <item name="android:background">@color/surface</item>
+    </style>
+
+
+    <style name="layoutStyle">
+        <item name="android:backgroundTint">@color/primaryContainer</item>
+    </style>
+
+    <style name="glImageSurfaceViewStyle">
+        <item name="backgroundColor">@color/surface</item>
+    </style>
+
+    <style name="roundedImageViewStyle" parent="">
+        <item name="cornerSizeTopRight">25dp</item>
+        <item name="cornerSizeTopLeft">25dp</item>
+        <item name="cornerSizeBottomLeft">25dp</item>
+        <item name="cornerSizeBottomRight">25dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+</resources>

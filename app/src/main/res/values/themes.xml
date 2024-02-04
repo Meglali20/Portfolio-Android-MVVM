@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Portfolio" parent="BaseTheme">
+        <item name="colorPrimary">@color/md_theme_0_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_0_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_0_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_0_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_0_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_0_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_0_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_0_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_0_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_0_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_0_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_0_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_0_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_0_outline</item>
+        <item name="colorOnBackground">@color/md_theme_0_onBackground</item>
+        <item name="colorSurface">@color/md_theme_0_surface</item>
+        <item name="colorOnSurface">@color/md_theme_0_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_0_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_0_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_0_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_0_inverseOnSurface</item>
+        <item name="colorError">#ffb3261e</item>
+        <item name="colorOnError">#ffffff</item>
+        <item name="colorErrorContainer">#fff9dedc</item>
+        <item name="colorOnErrorContainer">#ff410e0b</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="wavesSurfaceView">@style/wavesSurfaceViewStyle</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+
+    <style name="wavesSurfaceViewStyle">
+        <item name="bannerTextColor">@color/black</item>
+    </style>
+
+    <style name="OverlayTheme0" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_0_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_0_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_0_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_0_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_0_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_0_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_0_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_0_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_0_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_0_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_0_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_0_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_0_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_0_outline</item>
+        <item name="colorOnBackground">@color/md_theme_0_onBackground</item>
+        <item name="colorSurface">@color/md_theme_0_surface</item>
+        <item name="colorOnSurface">@color/md_theme_0_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_0_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_0_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_0_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_0_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme1" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_1_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_1_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_1_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_1_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_1_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_1_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_1_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_1_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_1_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_1_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_1_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_1_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_1_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_1_outline</item>
+        <item name="colorOnBackground">@color/md_theme_1_onBackground</item>
+        <item name="colorSurface">@color/md_theme_1_surface</item>
+        <item name="colorOnSurface">@color/md_theme_1_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_1_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_1_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_1_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_1_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme2" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_2_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_2_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_2_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_2_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_2_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_2_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_2_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_2_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_2_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_2_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_2_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_2_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_2_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_2_outline</item>
+        <item name="colorOnBackground">@color/md_theme_2_onBackground</item>
+        <item name="colorSurface">@color/md_theme_2_surface</item>
+        <item name="colorOnSurface">@color/md_theme_2_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_2_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_2_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_2_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_2_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme3" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_3_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_3_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_3_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_3_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_3_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_3_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_3_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_3_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_3_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_3_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_3_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_3_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_3_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_3_outline</item>
+        <item name="colorOnBackground">@color/md_theme_3_onBackground</item>
+        <item name="colorSurface">@color/md_theme_3_surface</item>
+        <item name="colorOnSurface">@color/md_theme_3_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_3_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_3_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_3_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_3_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme4" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_4_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_4_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_4_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_4_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_4_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_4_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_4_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_4_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_4_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_4_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_4_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_4_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_4_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_4_outline</item>
+        <item name="colorOnBackground">@color/md_theme_4_onBackground</item>
+        <item name="colorSurface">@color/md_theme_4_surface</item>
+        <item name="colorOnSurface">@color/md_theme_4_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_4_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_4_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_4_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_4_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme5" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_5_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_5_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_5_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_5_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_5_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_5_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_5_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_5_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_5_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_5_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_5_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_5_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_5_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_5_outline</item>
+        <item name="colorOnBackground">@color/md_theme_5_onBackground</item>
+        <item name="colorSurface">@color/md_theme_5_surface</item>
+        <item name="colorOnSurface">@color/md_theme_5_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_5_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_5_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_5_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_5_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme6" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_6_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_6_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_6_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_6_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_6_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_6_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_6_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_6_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_6_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_6_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_6_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_6_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_6_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_6_outline</item>
+        <item name="colorOnBackground">@color/md_theme_6_onBackground</item>
+        <item name="colorSurface">@color/md_theme_6_surface</item>
+        <item name="colorOnSurface">@color/md_theme_6_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_6_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_6_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_6_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_6_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme7" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_7_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_7_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_7_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_7_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_7_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_7_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_7_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_7_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_7_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_7_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_7_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_7_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_7_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_7_outline</item>
+        <item name="colorOnBackground">@color/md_theme_7_onBackground</item>
+        <item name="colorSurface">@color/md_theme_7_surface</item>
+        <item name="colorOnSurface">@color/md_theme_7_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_7_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_7_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_7_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_7_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme8" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_8_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_8_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_8_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_8_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_8_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_8_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_8_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_8_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_8_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_8_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_8_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_8_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_8_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_8_outline</item>
+        <item name="colorOnBackground">@color/md_theme_8_onBackground</item>
+        <item name="colorSurface">@color/md_theme_8_surface</item>
+        <item name="colorOnSurface">@color/md_theme_8_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_8_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_8_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_8_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_8_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme9" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_9_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_9_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_9_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_9_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_9_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_9_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_9_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_9_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_9_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_9_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_9_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_9_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_9_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_9_outline</item>
+        <item name="colorOnBackground">@color/md_theme_9_onBackground</item>
+        <item name="colorSurface">@color/md_theme_9_surface</item>
+        <item name="colorOnSurface">@color/md_theme_9_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_9_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_9_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_9_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_9_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme10" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_10_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_10_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_10_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_10_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_10_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_10_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_10_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_10_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_10_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_10_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_10_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_10_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_10_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_10_outline</item>
+        <item name="colorOnBackground">@color/md_theme_10_onBackground</item>
+        <item name="colorSurface">@color/md_theme_10_surface</item>
+        <item name="colorOnSurface">@color/md_theme_10_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_10_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_10_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_10_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_10_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme11" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_11_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_11_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_11_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_11_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_11_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_11_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_11_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_11_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_11_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_11_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_11_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_11_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_11_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_11_outline</item>
+        <item name="colorOnBackground">@color/md_theme_11_onBackground</item>
+        <item name="colorSurface">@color/md_theme_11_surface</item>
+        <item name="colorOnSurface">@color/md_theme_11_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_11_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_11_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_11_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_11_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme12" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_12_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_12_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_12_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_12_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_12_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_12_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_12_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_12_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_12_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_12_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_12_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_12_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_12_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_12_outline</item>
+        <item name="colorOnBackground">@color/md_theme_12_onBackground</item>
+        <item name="colorSurface">@color/md_theme_12_surface</item>
+        <item name="colorOnSurface">@color/md_theme_12_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_12_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_12_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_12_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_12_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme13" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_13_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_13_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_13_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_13_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_13_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_13_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_13_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_13_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_13_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_13_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_13_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_13_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_13_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_13_outline</item>
+        <item name="colorOnBackground">@color/md_theme_13_onBackground</item>
+        <item name="colorSurface">@color/md_theme_13_surface</item>
+        <item name="colorOnSurface">@color/md_theme_13_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_13_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_13_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_13_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_13_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme14" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_14_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_14_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_14_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_14_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_14_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_14_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_14_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_14_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_14_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_14_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_14_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_14_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_14_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_14_outline</item>
+        <item name="colorOnBackground">@color/md_theme_14_onBackground</item>
+        <item name="colorSurface">@color/md_theme_14_surface</item>
+        <item name="colorOnSurface">@color/md_theme_14_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_14_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_14_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_14_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_14_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme15" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_15_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_15_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_15_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_15_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_15_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_15_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_15_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_15_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_15_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_15_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_15_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_15_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_15_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_15_outline</item>
+        <item name="colorOnBackground">@color/md_theme_15_onBackground</item>
+        <item name="colorSurface">@color/md_theme_15_surface</item>
+        <item name="colorOnSurface">@color/md_theme_15_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_15_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_15_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_15_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_15_inverseOnSurface</item>
+    </style>
+
+
+    <style name="OverlayTheme16" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_16_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_16_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_16_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_16_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_16_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_16_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_16_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_16_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_16_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_16_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_16_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_16_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_16_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_16_outline</item>
+        <item name="colorOnBackground">@color/md_theme_16_onBackground</item>
+        <item name="colorSurface">@color/md_theme_16_surface</item>
+        <item name="colorOnSurface">@color/md_theme_16_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_16_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_16_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_16_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_16_inverseOnSurface</item>
+    </style>
+
+    <style name="OverlayTheme17" parent="Theme.Portfolio">
+        <item name="colorPrimary">@color/md_theme_17_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_17_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_17_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_17_onPrimaryContainer</item>
+        <item name="colorPrimaryInverse">@color/md_theme_17_inversePrimary</item>
+        <item name="colorSecondary">@color/md_theme_17_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_17_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_17_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_17_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_17_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_17_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_17_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_17_onTertiaryContainer</item>
+        <item name="colorOutline">@color/md_theme_17_outline</item>
+        <item name="colorOnBackground">@color/md_theme_17_onBackground</item>
+        <item name="colorSurface">@color/md_theme_17_surface</item>
+        <item name="colorOnSurface">@color/md_theme_17_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_17_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_17_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_17_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_17_inverseOnSurface</item>
+    </style>
+
+</resources>
+
+
+
+<!--
+<resources>
+
+    <style name="Theme.Portfolio" parent="BaseTheme">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="wavesSurfaceViewStyle">
+        <item name="bannerTextColor">@color/black</item>
+    </style>
+
+</resources>
+-->

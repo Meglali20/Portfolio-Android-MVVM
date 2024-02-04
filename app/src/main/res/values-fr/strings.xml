@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Portfolio</string>
+    <string name="save">Enregistrer</string>
+    <string name="homeTitle">Acceuil</string>
+    <string name="aboutTitle">À propos</string>
+    <string name="experienceTitle">Expérience</string>
+    <string name="portfolioTitle">Porjets</string>
+    <string name="contactTitle">Me contacter</string>
+    <string name="settingsTitle">Paramètres</string>
+    <string name="livePreviewBtn">Accès live</string>
+    <string name="livePreviewUnavailable">Accès non disponible</string>
+    <string name="tryAgainBtn">Réessayer</string>
+    <string name="downloadCVBtn">Télécharger CV</string>
+    <string name="errorMessage">Une erreur s\'est produite</string>
+    <string name="moreInformation">Plus d\'information</string>
+    <string name="languageSettings">Langue</string>
+    <string name="themeSettings">Thème</string>
+    <string name="colorSchemeSettings">Schéma de couleur</string>
+    <string name="colorSchemeSystemSettings">Système</string>
+    <string name="colorSchemeRandomSettings">Aléatoire</string>
+    <string name="downloadingTitle">Téléchargé %s</string>
+    <string name="errorNoInternet">Vérifiez votre connexion</string>
+    <string name="errorNotFound">Le endpoint de l\'API est introuvable</string>
+    <string name="errorNetwork">Une erreur de connexion s\'est produite</string>
+    <string name="errorDefault">Une erreur s\'est produite</string>
+</resources>

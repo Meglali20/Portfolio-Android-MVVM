@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/colorSurface"
+    tools:context=".ui.fragments.DemoImagePiecesFragment">
+
+   <!-- <com.oussama.portfolio.ui.components.imagepiecesview.ImagePiecesSurfaceView
+        android:id="@+id/imagePieces"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
+
+    <!--<com.oussama.portfolio.ui.components.wavestextview.WavesSurfaceView
+        android:id="@+id/wavesSurfaceView"
+        style="?attr/wavesSurfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:backgroundColor="#061434"
+        />-->
+
+   <!-- <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+        android:id="@+id/textShufflerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>-->
+
+    <com.oussama.portfolio.ui.components.glimageview.GLImageSurfaceView
+        android:id="@+id/glImageTextureView"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        app:backgroundColor="?attr/colorSurface" />
+
+</FrameLayout>

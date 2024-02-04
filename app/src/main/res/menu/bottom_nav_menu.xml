@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeNavMenu"
+        android:icon="@drawable/ic_home"
+        android:title="@string/homeTitle" />
+
+    <item
+        android:id="@+id/aboutNavMenu"
+        android:icon="@drawable/ic_about"
+        android:title="@string/aboutTitle" />
+
+    <item
+        android:id="@+id/experienceNavMenu"
+        android:icon="@drawable/ic_experience"
+        android:title="@string/experienceTitle" />
+
+    <item
+        android:id="@+id/portfolioNavMenu"
+        android:icon="@drawable/ic_portfolio"
+        android:title="@string/portfolioTitle" />
+
+
+    <item
+        android:id="@+id/contactNavMenu"
+        android:icon="@drawable/ic_contact"
+        android:title="@string/contactTitle" />
+
+
+    <item
+        android:id="@+id/settingsNavMenu"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settingsTitle" />
+</menu>

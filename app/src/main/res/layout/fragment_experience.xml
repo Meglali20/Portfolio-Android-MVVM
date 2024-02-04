@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    tools:context=".ui.fragments.ExperienceFragment">
+
+    <include
+        android:id="@+id/loadingLayout"
+        layout="@layout/include_loading"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fadeScrollbars="false"
+        android:paddingVertical="10dp"
+        android:scrollbars="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_rounded"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:backgroundTint="?attr/colorSecondaryContainer"
+            android:orientation="vertical">
+
+            <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                android:id="@+id/experienceDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="?attr/colorOnSecondaryContainer"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:id="@+id/downloadBtnLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/background_rounded"
+                android:backgroundTint="?attr/colorPrimary"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_download"
+                    app:tint="?attr/colorOnError"
+                    tools:ignore="ContentDescription" />
+
+                <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                    android:id="@+id/downloadBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/jet_brains_mono_bold"
+                    android:text="@string/downloadCVBtn"
+                    android:textAllCaps="true"
+                    android:textColor="?attr/colorOnPrimarySurface"
+                    app:autoAnimate="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

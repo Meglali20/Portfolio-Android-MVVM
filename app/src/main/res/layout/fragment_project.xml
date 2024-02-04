@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/colorSurface"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    tools:context=".ui.fragments.ProjectFragment">
+
+
+    <include
+        android:id="@+id/loadingLayout"
+        layout="@layout/include_loading"
+        android:visibility="gone" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingBottom="15dp">
+
+            <LinearLayout
+                android:id="@+id/projectTitleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:id="@+id/projectIcon"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@mipmap/ic_launcher_round"
+                    android:transitionName="projectIconTransition"
+                    tools:ignore="ContentDescription" />
+
+                <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                    android:id="@+id/projectTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/jet_brains_mono_bold"
+                    android:text="Project Title"
+                    android:textColor="@color/onSurface"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/viewPagerContainer"
+                android:layout_width="match_parent"
+                android:layout_height="420dp"
+                android:layout_below="@id/projectTitleLayout"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/item_media"/>
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:id="@+id/previewBtnLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewPagerContainer"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/border_background"
+                android:backgroundTint="@color/red"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="5dp">
+
+                <View
+                    android:id="@+id/previewIndicator"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_circle"
+                    android:backgroundTint="@color/red" />
+
+                <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                    android:id="@+id/previewBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/jet_brains_mono_bold"
+                    android:textAllCaps="true"
+                    android:textColor="?attr/colorOnSurface"
+                    android:text="@string/livePreviewBtn" />
+
+
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/previewBtnLayout"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_rounded"
+                android:backgroundTint="?attr/colorSecondaryContainer"
+                android:clipToPadding="false"
+                android:elevation="9dp">
+
+                <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                    android:id="@+id/projectDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="This is a project description.... project built using.... bla bla bla"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    tools:ignore="HardcodedText" />
+            </FrameLayout>
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

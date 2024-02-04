@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fillViewport="true"
+    tools:context=".ui.fragments.AboutFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/loadingLayout"
+            layout="@layout/include_loading" />
+
+        <LinearLayout
+            android:id="@+id/aboutMeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <com.oussama.portfolio.ui.components.glimageview.GLImageSurfaceView
+                android:id="@+id/glImageTextureView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_margin="10dp"
+                app:backgroundColor="?attr/colorSurface" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/background_rounded"
+                android:backgroundTint="?attr/colorSecondaryContainer"
+                android:clipToPadding="false"
+                android:elevation="9dp">
+
+                <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+                    android:id="@+id/textShufflerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textColor="?attr/colorOnSecondaryContainer"
+                    android:textSize="16sp" />
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</ScrollView>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Portfolio</string>
+    <string name="save">Save</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="homeTitle">Home</string>
+    <string name="aboutTitle">About</string>
+    <string name="experienceTitle">Experience</string>
+    <string name="portfolioTitle">Portfolio</string>
+    <string name="contactTitle">Contact</string>
+    <string name="settingsTitle">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="livePreviewBtn">Live Access</string>
+    <string name="livePreviewUnavailable">Access unavailable</string>
+    <string name="tryAgainBtn">Try again</string>
+    <string name="downloadCVBtn">Download CV</string>
+    <string name="errorMessage">An error occurred</string>
+    <string name="moreInformation">More information</string>
+    <string name="languageSettings">Language</string>
+    <string name="themeSettings">Theme</string>
+    <string name="colorSchemeSettings">Color scheme</string>
+    <string name="colorSchemeSystemSettings">System</string>
+    <string name="colorSchemeRandomSettings">Random</string>
+    <string name="downloadingTitle">Downloading %s</string>
+    <string name="errorNoInternet">Check your network connection.</string>
+    <string name="errorNotFound">API endpoint not found</string>
+    <string name="errorNetwork">A network error occurred</string>
+    <string name="errorDefault">An error occurred</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>
