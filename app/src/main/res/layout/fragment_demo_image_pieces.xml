@@ -22,7 +22,7 @@
         app:backgroundColor="#061434"
         />-->
 
-   <!-- <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
+    <!--<com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
         android:id="@+id/textShufflerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>-->

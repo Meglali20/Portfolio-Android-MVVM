@@ -93,21 +93,18 @@ class LocalRepository @Inject constructor(private val portfolioDatabase: Portfol
         }
     }
 
-    suspend fun insertExperience(experienceModel: ExperienceModel, lang: String) {
+    suspend fun insertExperience(experienceModelList: List<ExperienceModel>, lang: String) {
         withContext(Dispatchers.IO) {
             val exitingData = retrieveExperience(lang)
-            if (exitingData != null) portfolioDatabase.experienceDao().deleteExperience(exitingData)
-            val experienceEntity = ExperienceEntity(
-                description = experienceModel.description,
-                media = experienceModel.media,
-                lang = lang
-            )
-            val insertedRowId = portfolioDatabase.experienceDao().insertExperience(experienceEntity)
-            Timber.i("Insertion result : ${(insertedRowId > 0)}")
+            if (exitingData.isNotEmpty()) portfolioDatabase.experienceDao().deleteExperiences(exitingData)
+            val experienceEntity =
+                experienceModelList.map { ExperienceEntity(description = it.description, media = it.media, lang = lang) }
+            val insertedRows = portfolioDatabase.experienceDao().insertExperiences(experienceEntity).size
+            Timber.i("Insertion result : ${(insertedRows > 0)}")
         }
     }
 
-    fun retrieveExperience(lang: String): ExperienceEntity? {
+    fun retrieveExperience(lang: String): List<ExperienceEntity> {
         return portfolioDatabase.experienceDao().getExperience(lang)
     }
 

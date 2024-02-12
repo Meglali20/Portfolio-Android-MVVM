@@ -13,7 +13,6 @@ import com.oussama.portfolio.databinding.FragmentPortfolioBinding
 import com.oussama.portfolio.ui.adapters.ProjectsAdapter
 import com.oussama.portfolio.ui.components.ProjectClickListener
 import com.oussama.portfolio.ui.viewmodels.PortfolioViewModel
-import com.skydoves.transformationlayout.onTransformationStartContainer
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.util.Locale
@@ -29,7 +28,6 @@ class PortfolioFragment : BaseFragment<FragmentPortfolioBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        onTransformationStartContainer()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

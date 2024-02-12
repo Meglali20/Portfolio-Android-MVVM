@@ -8,10 +8,7 @@ import com.oussama.portfolio.data.models.MediaModel
 import com.oussama.portfolio.data.local.room.converters.MediaListConverter
 
 @TypeConverters(MediaListConverter::class)
-@Entity(
-    tableName = "experience",
-    indices = [Index(value = ["lang"], unique = true)]
-)
+@Entity(tableName = "experience")
 data class ExperienceEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,

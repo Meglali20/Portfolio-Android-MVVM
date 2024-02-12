@@ -91,6 +91,7 @@ class BottomNavigationBar : LinearLayout {
                 performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
                 if(activeItemIndex == index){
                     binding.itemTitle.shuffleText(reset = true, withDelay = false)
+                    glitchDrawable.startGlitchAnimation()
                     return@setOnClickListener
                 }
                 hidePreviousItem()

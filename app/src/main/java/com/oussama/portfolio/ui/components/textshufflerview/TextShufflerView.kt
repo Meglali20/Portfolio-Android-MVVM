@@ -23,7 +23,7 @@ import java.util.regex.Pattern
 class TextShufflerView : View {
     companion object {
         private const val MAX_ITERATIONS = 25
-        private const val ANIMATION_SLEEP_TIME = 2000
+        private const val ANIMATION_SLEEP_TIME = 4500
     }
 
     private var textSize: Int = 0

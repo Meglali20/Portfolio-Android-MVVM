@@ -41,13 +41,17 @@
                 android:layout_alignParentTop="true"
                 android:layout_margin="10dp">
 
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/projectIcon"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@mipmap/ic_launcher_round"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/ic_launcher_foreground"
+                    android:scaleType="center"
+                    android:background="@drawable/background_15_radius"
+                    android:backgroundTint="?attr/colorSecondaryContainer"
                     android:transitionName="projectIconTransition"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription"
+                    app:riv_corner_radius="15dp"/>
 
                 <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
                     android:id="@+id/projectTitle"

@@ -25,5 +25,6 @@
     <string name="errorNotFound">API endpoint not found</string>
     <string name="errorNetwork">A network error occurred</string>
     <string name="errorDefault">An error occurred</string>
+    <string name="errorMailAppNotFound">No email app found</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

@@ -17,5 +17,5 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): PortfolioDatabase =
-        Room.databaseBuilder(context, PortfolioDatabase::class.java, "portfolio").build()
+        Room.databaseBuilder(context, PortfolioDatabase::class.java, "portfolio").fallbackToDestructiveMigration().build()
 }

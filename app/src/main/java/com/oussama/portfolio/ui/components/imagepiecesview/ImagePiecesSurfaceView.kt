@@ -104,9 +104,8 @@ class ImagePiecesSurfaceView(context: Context, attrs: AttributeSet) : SurfaceVie
         } else {
             startDrawing()
             postDelayed({
-                /*animateIn()
-                postDelayed({ animateOut() }, 1200)*/
-                demoAnimateInFromCenter()
+                animateIn()
+                postDelayed({ animateOut() }, 1200)
             }, 800)
         }
     }
@@ -129,10 +128,10 @@ class ImagePiecesSurfaceView(context: Context, attrs: AttributeSet) : SurfaceVie
         animator.addListener(
             onEnd = {
                 blurredBackgroundImageBitmap = null
-                /*postDelayed({
+                postDelayed({
                     animateIn()
                     postDelayed({ animateOut() }, 1200)
-                }, 100)*/
+                }, 100)
             }
         )
         animator.duration = 1200

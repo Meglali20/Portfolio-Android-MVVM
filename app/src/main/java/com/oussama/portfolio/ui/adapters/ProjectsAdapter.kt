@@ -30,7 +30,7 @@ class ProjectsAdapter : RecyclerView.Adapter<ProjectViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectViewHolder {
         val binding =
-            ItemProjectBinding.inflate(LayoutInflater.from(parent.context), parent, false);
+            ItemProjectBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProjectViewHolder(binding)
     }
 

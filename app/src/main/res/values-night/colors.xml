@@ -568,6 +568,6 @@
     <color name="md_theme_17_inversePrimary">#A62E6F</color>
     <color name="md_theme_17_shadow">#000000</color>
     <color name="md_theme_17_surfaceTint">#FFAFD0</color>
-    <color name="md_theme_dark_outlineVariant">#504348</color>
-    <color name="md_theme_dark_scrim">#000000</color>
+    <color name="md_theme_17_outlineVariant">#504348</color>
+    <color name="md_theme_17_scrim">#000000</color>
 </resources>

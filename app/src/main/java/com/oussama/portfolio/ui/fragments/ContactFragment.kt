@@ -3,7 +3,9 @@ package com.oussama.portfolio.ui.fragments
 import android.content.Intent
 import android.net.Uri
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import com.oussama.portfolio.R
 import com.oussama.portfolio.data.DataError
 import com.oussama.portfolio.data.models.ContactModel
 import com.oussama.portfolio.databinding.FragmentContactBinding
@@ -28,14 +30,22 @@ class ContactFragment : BaseFragment<FragmentContactBinding>() {
             binding.githubBtn.onScroll()
         }
         binding.callBtnLayout.setOnClickListener {
-            val phoneNUmber = contactModelList.find { it.title == "phone" }?.url
+            val phoneNUmber = contactModelList.find { it.title.lowercase() == "phone" }?.url
             if (phoneNUmber != null)
                 startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNUmber")))
         }
         binding.mailBtnLayout.setOnClickListener {
-            val mail = contactModelList.find { it.title.lowercase() == "mail" }?.url
-            if (mail != null)
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("mailto:$mail")))
+            val mail = contactModelList.find { it.title.lowercase() == "mail" }?.url ?: return@setOnClickListener
+
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:")
+                putExtra(Intent.EXTRA_EMAIL, mail)
+            }
+
+            if (intent.resolveActivity(requireActivity().packageManager) != null) {
+                startActivity(intent)
+            } else
+                Toast.makeText(requireContext(), getString(R.string.errorMailAppNotFound), Toast.LENGTH_SHORT).show()
         }
         binding.linkedinBtnLayout.setOnClickListener {
             val url = contactModelList.find { it.title.lowercase() == "linkedin" }?.url

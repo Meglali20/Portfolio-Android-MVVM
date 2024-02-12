@@ -36,7 +36,7 @@ class ExperienceFragment : BaseFragment<FragmentExperienceBinding>() {
         portfolioViewModel.experienceLiveData.observe(this) { experienceModel ->
             if (experienceModel.data != null) {
                 showExperienceContainer()
-                displayExperience(experienceModel.data)
+                displayExperience(experienceModel.data[0])
             } else {
                 val errorMessage =
                     DataError.getErrorMessage(requireContext(), experienceModel.errorCode!!)
@@ -53,7 +53,7 @@ class ExperienceFragment : BaseFragment<FragmentExperienceBinding>() {
         binding.experienceDescription.setText(experienceModel.description, autoAnimate = true)
         binding.downloadBtnLayout.setOnClickListener {
             val fileDownloader = FileDownloader(requireContext())
-            val fileUrl = "https://www.oussamameg.com/assets/CV_OUSSAMA_MEGLALI_EN.pdf"
+            val fileUrl = experienceModel.media[0].imageUrl
             fileDownloader.downloadFile(fileUrl)
         }
     }
@@ -73,6 +73,6 @@ class ExperienceFragment : BaseFragment<FragmentExperienceBinding>() {
 
     private fun showExperienceContainer() {
         binding.loadingLayout.root.visibility = View.GONE
-        binding.scrollView.visibility = View.VISIBLE
+        binding.experienceContainer.visibility = View.VISIBLE
     }
 }

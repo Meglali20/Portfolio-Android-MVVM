@@ -63,7 +63,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
                                 return false
                             }
                         })
-                        .load(aboutMeModel.data.media[0].imageUrl)
+                        .load(aboutMeModel.data.media[3].imageUrl)
                         .submit(binding.glImageTextureView.width, binding.glImageTextureView.height)
                 }, 400)
             } else {

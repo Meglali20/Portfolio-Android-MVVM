@@ -42,18 +42,19 @@ class MainRepository @Inject constructor(
         return result
     }
 
-    suspend fun fetchExperience(lang: String): Resource<ExperienceModel> {
-        val existingData: ExperienceEntity? = withContext(Dispatchers.IO) {
+    @Suppress("UNCHECKED_CAST")
+    suspend fun fetchExperience(lang: String): Resource<List<ExperienceModel>> {
+        val existingData: List<ExperienceEntity> = withContext(Dispatchers.IO) {
             return@withContext localRepository.retrieveExperience(lang)
         }
-        if (existingData != null) {
+        if (existingData.isNotEmpty()) {
             Timber.i("Data already found in cache... will serve cache data")
-            val experienceModel = ExperienceModel(description = existingData.description, media = existingData.media)
+            val experienceModel = existingData.map{ ExperienceModel(description = it.description, media = it.media)}
             return Resource.Success(data = experienceModel)
         }
         Timber.w("No data cached for locale $lang requesting from remote repository")
 
-        val result: Resource<ExperienceModel> = remoteRepository.fetchExperience(lang)
+        val result: Resource<List<ExperienceModel>> = remoteRepository.fetchExperience(lang) as Resource<List<ExperienceModel>>
         if (result.data != null) {
             localRepository.insertExperience(result.data, lang)
         }

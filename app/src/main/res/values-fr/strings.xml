@@ -24,4 +24,5 @@
     <string name="errorNotFound">Le endpoint de l\'API est introuvable</string>
     <string name="errorNetwork">Une erreur de connexion s\'est produite</string>
     <string name="errorDefault">Une erreur s\'est produite</string>
+    <string name="errorMailAppNotFound">Aucune application de messagerie n\'a été trouvée</string>
 </resources>

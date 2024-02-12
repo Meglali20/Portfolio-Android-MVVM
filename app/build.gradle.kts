@@ -48,6 +48,7 @@ android {
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
+            signingConfig = signingConfigs.getByName("debug")
         }
         getByName("debug") {
             isDebuggable = true
@@ -125,6 +126,5 @@ dependencies {
     debugImplementation("com.squareup.leakcanary:leakcanary-android:3.0-alpha-1")
 
     implementation("com.makeramen:roundedimageview:2.3.0")
-    implementation("com.github.skydoves:transformationlayout:1.1.3")
 
 }

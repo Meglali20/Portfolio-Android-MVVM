@@ -8,7 +8,6 @@
     android:layout_marginVertical="5dp"
     app:cardCornerRadius="15dp"
     app:cardBackgroundColor="?attr/colorSecondaryContainer"
-
     tools:ignore="HardcodedText">
 
 
@@ -25,13 +24,17 @@
             android:layout_alignParentTop="true"
             android:layout_margin="10dp">
 
-            <ImageView
+            <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/projectIcon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/ic_launcher_round"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:scaleType="center"
+                android:background="@drawable/background_15_radius"
+                android:backgroundTint="?attr/colorSurface"
                 android:transitionName="projectIconTransition"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                app:riv_corner_radius="15dp"/>
 
 
             <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
@@ -57,7 +60,7 @@
             android:scaleType="centerCrop"
             android:minHeight="225dp"
             android:src="@drawable/ic_launcher_background"
-            app:riv_corner_radius="25dp"
+            app:riv_corner_radius="15dp"
             tools:ignore="ContentDescription" />
 
 

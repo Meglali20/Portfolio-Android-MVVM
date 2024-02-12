@@ -15,8 +15,8 @@ interface FirebaseAPIService {
     @GET("portfolio/{lang}/portfolio.json")
     suspend fun fetchPortfolio(@Path("lang") language: String): Response<PortfolioModel>
 
-    @GET("portfolio/{lang}/portfolio.json")
-    suspend fun fetchExperience(@Path("lang") language: String): Response<ExperienceModel>
+    @GET("portfolio/{lang}/experience.json")
+    suspend fun fetchExperience(@Path("lang") language: String): Response<List<ExperienceModel>>
 
     @GET("portfolio/contact.json")
     suspend fun fetchContact(): Response<List<ContactModel>>

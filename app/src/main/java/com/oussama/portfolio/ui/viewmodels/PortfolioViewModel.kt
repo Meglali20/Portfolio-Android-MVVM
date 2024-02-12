@@ -24,8 +24,8 @@ class PortfolioViewModel @Inject constructor(private val mainRepository: MainRep
     private val aboutMeLiveDataPrivate = MutableLiveData<Resource<AboutMeModel>>()
     val aboutMeLiveData: LiveData<Resource<AboutMeModel>> get() = aboutMeLiveDataPrivate
 
-    private val experienceLiveDataPrivate = MutableLiveData<Resource<ExperienceModel>>()
-    val experienceLiveData: LiveData<Resource<ExperienceModel>> get() = experienceLiveDataPrivate
+    private val experienceLiveDataPrivate = MutableLiveData<Resource<List<ExperienceModel>>>()
+    val experienceLiveData: LiveData<Resource<List<ExperienceModel>>> get() = experienceLiveDataPrivate
 
     private val portfolioLiveDataPrivate = MutableLiveData<Resource<PortfolioModel>>()
     val portfolioLiveData: LiveData<Resource<PortfolioModel>> get() = portfolioLiveDataPrivate

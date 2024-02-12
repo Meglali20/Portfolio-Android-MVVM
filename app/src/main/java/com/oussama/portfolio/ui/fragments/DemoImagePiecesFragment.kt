@@ -84,8 +84,8 @@ class DemoImagePiecesFragment : BaseFragment<FragmentDemoImagePiecesBinding>() {
         }, 400)
         /*binding.textShufflerView.setOnClickListener {
             Handler(Looper.getMainLooper()).postDelayed({
-                binding.textShufflerView.shuffleText(reset = true, withDelay = true)
-            }, 2000)
+                binding.textShufflerView.shuffleText(reset = true, withDelay = false)
+            }, 100)
         }*/
         /*binding.imagePieces.setOnTouchListener { view, event ->
             when (event?.action) {

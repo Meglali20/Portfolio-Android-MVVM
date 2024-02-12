@@ -46,10 +46,10 @@ constructor(
         }
     }
 
-    suspend fun fetchExperience(lang: String): Resource<ExperienceModel> {
+    suspend fun fetchExperience(lang: String): Resource<List<*>> {
         val firebaseAPIService = retrofitClient.createService(FirebaseAPIService::class.java)
         return when (val response = processCall { firebaseAPIService.fetchExperience(lang) }) {
-            is ExperienceModel -> {
+            is List<*> -> {
                 Resource.Success(data = response)
             }
 

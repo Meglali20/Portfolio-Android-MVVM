@@ -5,9 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 import com.oussama.portfolio.BaseApplication
 import com.oussama.portfolio.data.models.MediaModel
 import com.oussama.portfolio.databinding.ItemMediaBinding
@@ -18,7 +15,7 @@ class MediaAdapter : RecyclerView.Adapter<MediaViewHolder>() {
     private val mediaList: ArrayList<MediaModel> = ArrayList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MediaViewHolder {
         val binding =
-            ItemMediaBinding.inflate(LayoutInflater.from(parent.context), parent, false);
+            ItemMediaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MediaViewHolder(binding)
     }
 

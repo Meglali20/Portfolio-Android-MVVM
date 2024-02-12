@@ -160,7 +160,7 @@ fun TextDisplay(text: String, font: FontFamily, animate: Boolean = false) {
                         //currentLine.add(cell) // Default color is White
                     }
 
-                    if(!isLastWordInLine)
+                    //if(!isLastWordInLine)
                         //currentLine.add(CellObj(' ', Color.White, font = font)) // Add space after the word
                     currentLineWidth += wordWidth
                     numberOfSpaces++
@@ -271,8 +271,8 @@ fun Shuffler(text: String, font: FontFamily, currentIteration: Int, typeface: Ty
                     currentLine.add(cell) // Default color is White*/
                 }
 
-                if (!isLastWordInLine)
-                    /*currentLine.add(
+                /*if (!isLastWordInLine)
+                    currentLine.add(
                         CellObj(
                             ' ',
                             Color.White,

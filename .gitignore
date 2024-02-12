@@ -8,10 +8,14 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+/.idea
 .DS_Store
 /build
 /captures
+/.github
 /firebase
+/firebase/config.py
+/screenshots
 /firebase/admin/*.json
 /firebase/assets/*.webp
 /firebase/assets/*.png
@@ -19,3 +23,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/src/test
