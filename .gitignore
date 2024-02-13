@@ -22,7 +22,7 @@
 /firebase/__pycache__
 /firebase/admin/*
 !/firebase/admin/README.md
-/screenshots
+/screenshots/*.mkv
 /app/src/androidTest
 .externalNativeBuild
 .cxx
