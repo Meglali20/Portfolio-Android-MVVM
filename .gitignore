@@ -14,6 +14,7 @@
 /captures
 /.github
 /firebase/*.json
+/firebase/config.py
 /firebase/assets/*
 !/firebase/assets/README.md
 /firebase/lang/*.json
