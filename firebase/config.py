@@ -1,0 +1,2 @@
+DATABASE_URL = ""
+STORAGE_BUCKET = ""

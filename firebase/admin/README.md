@@ -1,0 +1,1 @@
+Place your firebase serviceAccountKey.json in this folder

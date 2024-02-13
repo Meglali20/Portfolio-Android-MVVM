@@ -1,0 +1,1 @@
+Place your assets in this folder or in subfolders in this folder
