@@ -12,7 +12,6 @@
 .DS_Store
 /build
 /captures
-/.github
 /firebase/*.json
 /firebase/config.py
 /firebase/assets/*

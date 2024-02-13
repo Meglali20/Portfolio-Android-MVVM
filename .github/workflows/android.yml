@@ -1,0 +1,48 @@
+name: Build Release APK
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 18
+
+      - name: Cache Gradle and wrapper
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+              
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      - name: Build Release APK
+        run: ./gradlew assembleRelease
+
+      - name: Generate build number
+        id: buildnumber
+        uses: einaregilsson/build-number@v3 
+        with:
+          token: ${{secrets.TOKEN}}
+
+      - name: Push to Releases
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "app/build/outputs/apk/release/*"
+          tag: build-${{ steps.buildnumber.outputs.build_number }}
+          token: ${{ secrets.TOKEN }}
