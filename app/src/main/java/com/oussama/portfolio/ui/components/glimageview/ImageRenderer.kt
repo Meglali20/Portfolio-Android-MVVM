@@ -3,6 +3,7 @@ package com.oussama.portfolio.ui.components.glimageview
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.opengl.GLES20
@@ -11,7 +12,10 @@ import android.opengl.GLUtils
 import android.opengl.Matrix
 import android.view.MotionEvent
 import android.view.animation.AnticipateOvershootInterpolator
+import com.oussama.portfolio.BaseApplication
 import timber.log.Timber
+import java.io.BufferedReader
+import java.io.InputStreamReader
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
@@ -166,6 +170,32 @@ class ImageRenderer(
     fun paused(isPaused: Boolean) {
         this.isPaused = isPaused
     }
+
+    companion object {
+        @JvmStatic
+        fun loadFromAsset(context: Context, fileName: String): String {
+            val assetManager = context.assets
+            try {
+                val inputStream = assetManager.open(fileName)
+                val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+                val stringBuilder = StringBuilder()
+                var line: String?
+                do {
+                    line = bufferedReader.readLine()
+                    if (line != null) {
+                        stringBuilder.append(line)
+                        stringBuilder.append("\n")
+                    }
+                } while (line != null)
+                bufferedReader.close()
+                inputStream.close()
+                return stringBuilder.toString()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                return ""
+            }
+        }
+    }
 }
 
 class Square(bitmap: Bitmap) {
@@ -213,165 +243,9 @@ class Square(bitmap: Bitmap) {
     private var rangeSkippingValue = maxRangeSkippingValue
 
     init {
-        val vertexShaderCode =
-            "uniform mat4 uMVPMatrix;\n" +
-                    "attribute vec2 vPosition;\n" +
-                    "attribute vec2 aTextureCoord;\n" +
-                    "\n" +
-                    "void main() {\n" +
-                    "    gl_Position = vec4(vPosition, 0, 1);\n" +
-                    "}"
 
-        val fragmentShaderCode =
-            "precision mediump float;\n" +
-                    "\n" +
-                    "uniform vec2 u_resolution;\n" +
-                    "uniform int isTouching;\n" +
-                    "uniform sampler2D u_texture0;\n" +
-                    "uniform float startRangeX; \n" +
-                    "uniform float endRangeX; \n" +
-                    "uniform float startRangeY; \n" +
-                    "uniform float endRangeY; \n" +
-                    "uniform float initialAlpha; \n" +
-                    "uniform float rangeSkippingValue; \n" +
-                    "\n" +
-                    "float character(float n, vec2 p)\n" +
-                    "{\n" +
-                    "p = floor(p*vec2(4.0, -4.0) + 2.5);\n" +
-                    "    if (clamp(p.x, 0.0, 4.0) == p.x)\n" +
-                    "{\n" +
-                    "        if (clamp(p.y, 0.0, 4.0) == p.y)\n" +
-                    "{\n" +
-                    "            if (int(mod(n/exp2(p.x + 5.0*p.y), 2.0)) == 1) return 1.0;\n" +
-                    "}\n" +
-                    "    }\n" +
-                    "return 0.0;\n" +
-                    "}\n" +
-                    "vec3 invertColor(vec3 color) {\n" +
-                    "    return vec3(1.0 - color.r, 1.0 - color.g, 1.0 - color.b);\n" +
-                    "}\n" +
-                    "\n" +
-                    "bool isBlack(vec3 color) {\n" +
-                    "    return color.r == 0.0 && color.g == 0.0 && color.b == 0.0;\n" +
-                    "}\n" +
-                    "bool isInsideRange(vec2 uv, float startRangeX, float endRangeX, float startRangeY, float endRangeY, vec2 u_resolution, float rangeModifier) { // Checks if is inside a square \n" +
-                    "    float scaledStartRangeX = startRangeX + rangeModifier;\n" +
-                    "    float scaledEndRangeX = endRangeX - rangeModifier;\n" +
-                    "    float scaledStartRangeY = startRangeY + rangeModifier;\n" +
-                    "    float scaledEndRangeY = endRangeY - rangeModifier;\n" +
-                    "\n" +
-                    "    return (uv.x > scaledStartRangeX / u_resolution.x && uv.x < scaledEndRangeX / u_resolution.x &&\n" +
-                    "            uv.y > scaledStartRangeY / u_resolution.y && uv.y < scaledEndRangeY / u_resolution.y);\n" +
-                    "}\n" +
-                    "bool isInsideCircle(vec2 uv, vec2 center, float radius, vec2 u_resolution) {\n" +
-                    "    vec2 normalizedUV = uv * u_resolution / max(u_resolution.x, u_resolution.y);\n" +
-                    "    vec2 normalizedCenter = center / max(u_resolution.x, u_resolution.y);\n" +
-                    "    float distanceSquared = dot(normalizedUV - normalizedCenter, normalizedUV - normalizedCenter);\n" +
-                    "    float radiusSquared = (radius / max(u_resolution.x, u_resolution.y)) * (radius / max(u_resolution.x, u_resolution.y));\n" +
-                    "    return distanceSquared < radiusSquared;\n" +
-                    "}" +
-                    "float calculateAlphaFalloff(vec2 uv, vec2 u_resolution) {\n" +
-                    "    float distToLeft = uv.x;\n" +
-                    "    float distToRight = u_resolution.x - uv.x;\n" +
-                    "    float distToTop = uv.y;\n" +
-                    "    float distToBottom = u_resolution.y - uv.y;\n" +
-                    "\n" +
-                    "    float edgeThreshold = 0.2; // Adjust the edge threshold here\n" +
-                    "\n" +
-                    "    // Normalize distances\n" +
-                    "    float maxDist = max(u_resolution.x, u_resolution.y);\n" +
-                    "    distToLeft /= maxDist;\n" +
-                    "    distToRight /= maxDist;\n" +
-                    "    distToTop /= maxDist;\n" +
-                    "    distToBottom /= maxDist;\n" +
-                    "\n" +
-                    "    float alpha = initialAlpha;\n" +
-                    "\n" +
-                    "    // Check if the pixel is closer to the left or right side\n" +
-                    "    float minHorizontalDist = min(distToLeft, distToRight);\n" +
-                    "    alpha *= smoothstep(0.0, edgeThreshold, minHorizontalDist);\n" +
-                    "\n" +
-                    "    // Check if the pixel is closer to the top or bottom side\n" +
-                    "    float minVerticalDist = min(distToTop, distToBottom);\n" +
-                    "    alpha *= smoothstep(0.0, edgeThreshold, minVerticalDist);\n" +
-                    "\n" +
-                    "    return alpha;\n" +
-                    "}\n" +
-                    "void main() {\n" +
-                    "    vec2 pix = gl_FragCoord.xy;\n" +
-                    "    vec2 uv = pix / u_resolution.xy;\n" +
-                    "    uv.y = 1.0 - uv.y; // Flip the texture vertically\n" +
-                    "\n" +
-                    "    vec3 col = texture2D(u_texture0, uv).rgb;\n" +
-                    "    float gray = 0.3 * col.r + 0.59 * col.g + 0.11 * col.b;\n" +
-                    "\n" +
-                    "    int n =  4096;\n" +
-                    "\n" +
-                    "    // limited character set\n" +
-                    "    if (gray > 0.2) n = 65600;    // :\n" +
-                    "    if (gray > 0.3) n = 163153;   // *\n" +
-                    "    if (gray > 0.4) n = 15255086; // o \n" +
-                    "    if (gray > 0.5) n = 13121101; // &\n" +
-                    "    if (gray > 0.6) n = 15252014; // 8\n" +
-                    "    if (gray > 0.7) n = 13195790; // @\n" +
-                    "    if (gray > 0.8) n = 11512810; // #\n" +
-                    "\n" +
-                    "    float charsize = 4.8;\n" +
-                    "    float alpha = 1.0;\n" +
-                    "    vec2 p = mod(pix / charsize, charsize / 2.0) - vec2(charsize / 4.0);\n" +
-                    "\n" +
-                    "        float rangeModifier = endRangeY - startRangeY;\n" +
-                    "        bool insideRange = isInsideCircle(uv, vec2((startRangeX + endRangeX) / 2.0, (startRangeY + endRangeY) / 2.0), (endRangeX - startRangeX) / 2.0, u_resolution);\n" +
-                    "\n" +
-                    "        if (insideRange) {\n" +
-                    "            vec2 center = vec2((startRangeX + endRangeX) / 2.0, (startRangeY + endRangeY) / 2.0);\n" +
-                    "            float distance = distance(uv * u_resolution, center);\n" +
-                    "            \n" +
-
-                    "\n" +
-                    "            // Additional logic for changing characters gradually\n" +
-                    "            float heatArea = clamp(1. - distance / (u_resolution.x * 0.5), 0.0, 1.0);\n" +
-                    "            float bwFactor = 1.0;\n" +
-                    "            float blenderDivider = (u_resolution.x * 0.1);\n" +
-                    "    if (isTouching == 1) {\n" +
-                    "        blenderDivider = (u_resolution.x * 0.22);\n" +
-                    "    } else {\n" +
-                    "blenderDivider = (u_resolution.x * 0.11);" +
-                    "}" +
-
-                    "             if (heatArea < 0.2) {\n" +
-                    "                n = 4096;\n" +
-                    "            } else if (heatArea < 0.3) {\n" +
-                    "                n = 4096;\n" +
-                    "            } else if (heatArea < 0.4) {\n" +
-                    "                blenderDivider = (u_resolution.x * 0.45);" +
-                    "            } else if (heatArea < 0.5) {\n" +
-                    "                blenderDivider = (u_resolution.x * 0.4);" +
-                    "            } else if (heatArea < 0.6) {\n" +
-                    "                blenderDivider = (u_resolution.x * 0.4);" +
-                    "            } \n" +
-                    "bwFactor = 1.2;\n" +
-                    "            // Adjust the smoothstep range for a smoother blending\n" +
-                    "            float blendAmount = smoothstep(0.1, 1.0, distance / blenderDivider);\n" +
-                    "\n" +
-                    "            // Gradual blending from the center towards the edges\n" +
-                    "            col = mix(col, vec3(character(float(n), p)), blendAmount);\n" +
-                    "            if (heatArea < 0.2) {\n" +
-                    "                col = vec3(character(float(n), p));\n" +
-                    "            } else if (heatArea < rangeSkippingValue*0.9) {\n" +
-                    "                col = (col * bwFactor) * character(float(n), p);\n" +
-                    "            }\n" +
-
-                    "        } else {\n" +
-                    "            col = vec3(character(float(n), p));\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        alpha = calculateAlphaFalloff(pix, u_resolution);   " +
-                    "    gl_FragColor = vec4(col, alpha);\n" +
-                    "}"
-
-        val vertexShader = loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode)
-        val fragmentShader = loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode)
+        val vertexShader = loadShader(GLES20.GL_VERTEX_SHADER, ImageRenderer.loadFromAsset(BaseApplication.INSTANCE, "shaders/vertex_shader.glsl"))
+        val fragmentShader = loadShader(GLES20.GL_FRAGMENT_SHADER, ImageRenderer.loadFromAsset(BaseApplication.INSTANCE, "shaders/fragment_shader.glsl"))
 
         program = GLES20.glCreateProgram().also {
             GLES20.glAttachShader(it, vertexShader)
