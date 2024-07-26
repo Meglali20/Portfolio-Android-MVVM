@@ -1,6 +1,5 @@
 package com.oussama.portfolio.ui.components.textshufflerview
 
-import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
@@ -22,8 +21,10 @@ import java.util.regex.Pattern
 
 class TextShufflerView : View {
     companion object {
-        private const val MAX_ITERATIONS = 25
-        private const val ANIMATION_SLEEP_TIME = 4500
+        const val MAX_ITERATIONS = 25
+        const val ANIMATION_SLEEP_TIME = 30000
+        const val SHORT_ANIMATION = 800L
+        const val LONG_ANIMATION = 1500L
     }
 
     private var textSize: Int = 0
@@ -46,6 +47,7 @@ class TextShufflerView : View {
     private var autoAnimate = false
     private var inScrollView = true
     private val viewLocationOnScreen = IntArray(2)
+    private var delayCells = false
     var textColor: Int = Color.Blue.toArgb()
         set(value) {
             field = value
@@ -280,7 +282,7 @@ class TextShufflerView : View {
         }
     }
 
-    override fun onDraw(canvas: Canvas) {
+    /*override fun onDraw(canvas: Canvas) {
         var numberOfChars = 0
         var drw = ""
         for ((lineIndex, line) in lines.withIndex()) {
@@ -307,13 +309,18 @@ class TextShufflerView : View {
                 val alpha = if (currentIteration == 0) 0 else 255
                 if (alpha == 0) return@forEachIndexed
 
-                /*val char =
+                *//*val char =
                     if (currentIteration >= MAX_ITERATIONS) originalCharacter else lettersAndSymbols.random()
                 val color =
-                    if (currentIteration >= MAX_ITERATIONS) cellObj.originalColor else colors.random()*/
+                    if (currentIteration >= MAX_ITERATIONS) cellObj.originalColor else colors.random()*//*
 
 
-                val previousIteration = if (isInEditMode) currentIteration else cellObj.previousIteration
+                if (currentIteration == 0)
+                    cellObj.animationStartTime = System.currentTimeMillis()
+
+                cellObj.currentIteration = calculateIterationValue(MA)
+
+                val previousIteration = *//*if (isInEditMode) currentIteration else*//* cellObj.previousIteration
                 val char: Char
                 val color: Int
                 if(previousIteration == currentIteration) {
@@ -341,10 +348,172 @@ class TextShufflerView : View {
                 line.previousIteration = line.currentIteration
             }
         }
+    }*/
+    override fun onDraw(canvas: Canvas) {
+        var numberOfChars = 0
+        var drw = ""
+        var isInvalidationNeeded = false
+        for ((lineIndex, line) in lines.withIndex()) {
+            val lineY = lineIndex * lineHeight + lineHeight
+            if (!line.isVisible && !isInEditMode) {
+                var lineText = ""
+                line.cellsList.forEach {
+                    lineText += it.originalCharacter
+                }
+                continue
+            }
+            if (lineIndex > 0) {
+                numberOfChars++
+                drw += " "
+            }
+
+            if (line.animationStartTime <= 0 && line.currentIteration != MAX_ITERATIONS) {
+                line.animationStartTime = System.currentTimeMillis()
+            }
+            if (!delayCells)
+                prepareLineForDrawing(lineIndex, line)
+            line.cellsList.forEachIndexed { cellIndex, cellObj ->
+                if (!delayCells) {
+                    cellObj.currentIteration = line.currentIteration
+                } else {
+                    if (cellObj.currentIteration < MAX_ITERATIONS)
+                        prepareCellForDrawing(lineIndex, line, cellIndex, cellObj)
+                }
+
+                val originalCharacter = cellObj.originalCharacter
+                numberOfChars++
+                drw += originalCharacter
+                if (originalCharacter == ' ') return@forEachIndexed
+
+                val currentIteration =
+                    if (isInEditMode) (if (cellIndex < line.cellsList.size / 2) MAX_ITERATIONS else 3) else cellObj.currentIteration
+
+                val alpha = if(delayCells){
+                    if (currentIteration == 0 && !isInEditMode)
+                        0
+                    else if (currentIteration in 1..5 )
+                        120
+                    else
+                        255
+                } else{
+                    255
+                }
+
+
+                if (alpha == 0) return@forEachIndexed
+
+                val previousIteration = /*if (isInEditMode) currentIteration else*/
+                    cellObj.previousIteration
+                val char: Char
+                val color: Int
+                if (previousIteration == currentIteration) {
+                    char = cellObj.currentCharacter
+                    color = cellObj.currentColor
+                } else {
+                    char =
+                        if (currentIteration >= MAX_ITERATIONS) originalCharacter else lettersAndSymbols.random()
+                    color =
+                        if (currentIteration >= MAX_ITERATIONS) cellObj.originalColor else colors.random()
+                }
+
+                val charWidth = paint.measureText(char.toString())
+                val x = cellIndex * charWidth
+                paint.color = color
+                if (!isInEditMode) {
+                    paint.alpha = alpha
+                }
+                canvas.drawText(char.toString(), x, lineY, paint)
+                cellObj.currentCharacter = char
+                cellObj.currentColor = color
+                cellObj.previousIteration = cellObj.currentIteration
+                line.previousIteration = line.currentIteration
+            }
+            val lineFullyAnimated = if (delayCells) line.cellsList.all { it.currentIteration == MAX_ITERATIONS } else line.currentIteration == MAX_ITERATIONS
+            if (lineFullyAnimated) {
+                line.isAnimationFinished = true
+                line.lastTimeAnimationPlayed = System.currentTimeMillis()
+                line.animationStartTime = -1L
+            } else
+                isInvalidationNeeded = true
+        }
+        if (isInvalidationNeeded)
+            invalidate()
     }
 
+    private fun prepareLineForDrawing(lineIndex: Int, line: LineObj) {
+        val delay = lineIndex * 150L
+        line.currentIteration = calculateIterationValue(
+            MAX_ITERATIONS,
+            line.animationStartTime + delay,
+            SHORT_ANIMATION
+        )
+    }
 
+    private fun prepareCellForDrawing(
+        lineIndex: Int,
+        line: LineObj,
+        cellIndex: Int,
+        cellObj: CellObj
+    ) {
+        val delayValue = if (delayCells) (((lineIndex + 1) + cellIndex) * 50L) else 0
+        if (delayCells && !cellObj.delayed) {
+            val currentTime = System.currentTimeMillis()
+            if (currentTime < line.animationStartTime + delayValue) {
+                cellObj.currentIteration = 0
+                return
+            } else {
+                cellObj.delayed = true
+            }
+        }
+        cellObj.currentIteration = calculateIterationValue(
+            MAX_ITERATIONS,
+            line.animationStartTime + delayValue,
+            LONG_ANIMATION
+        )
+    }
 
+    /*private fun prepareCellForDrawing(
+        lineIndex: Int,
+        line: LineObj,
+        cellIndex: Int,
+        cellObj: CellObj
+    ) {
+
+        if(cellObj.delay == 0) {
+            val delayValue = if (delayCells) ((500..1500).random()) else 0
+            cellObj.delay = delayValue
+        }
+
+        if (delayCells && !cellObj.delayed) {
+            val currentTime = System.currentTimeMillis()
+            if (currentTime < line.animationStartTime + cellObj.delay) {
+                cellObj.currentIteration = 0
+                return
+            } else {
+                cellObj.delayed = true
+            }
+        }
+        cellObj.currentIteration = calculateIterationValue(
+            MAX_ITERATIONS,
+            line.animationStartTime + cellObj.delay,
+            1500
+        )
+    }*/
+
+    private fun calculateIterationValue(
+        maxIterations: Int,
+        animationStartTime: Long,
+        animationDuration: Long
+    ): Int {
+        val currentTime = System.currentTimeMillis()
+        val elapsedTime = currentTime - animationStartTime
+        if (elapsedTime >= animationDuration) {
+            return maxIterations
+        }
+        val fractionElapsed = elapsedTime.toFloat() / animationDuration.toFloat()
+
+        return (fractionElapsed * maxIterations).toInt()
+    }
 
     /**
      * we set visibility to false lines that are not visible and that has not been animated yet
@@ -353,9 +522,10 @@ class TextShufflerView : View {
         val currentTimestamp = System.currentTimeMillis()
         lines.forEachIndexed { lineIndex, lineObj ->
             val lineY = lineIndex * lineHeight + lineHeight
-            val isLineAnimated = isLineAnimated(lineObj, currentTimestamp)
-            lineObj.isVisible = isLineVisible(0, lineY.toInt())
-            if (!isLineAnimated && !lineObj.isVisible) {
+            val isLineAnimated =
+                isLineAnimated(lineObj, currentTimestamp) || isLineAnimationInProgress(lineObj)
+            lineObj.isVisible = isLineVisible(0, lineY.toInt()) || isLineAnimated
+            if (!isLineAnimated /*&& !lineObj.isVisible*/) {
                 resetIterationForLine(lineObj)
             }
         }
@@ -365,11 +535,76 @@ class TextShufflerView : View {
         shuffleText(reset = false, withDelay = true)
     }
 
-
-
-    fun shuffleText(reset: Boolean, withDelay: Boolean) {
+    /*fun shuffleText(reset: Boolean, withDelay: Boolean) {
         if (reset) reset()
         filterLinesToDraw()
+        if (isAnimating) return
+
+        val animatorSets = mutableListOf<Animator>()
+
+        lines.filter { it.isVisible }.forEachIndexed { lineIndex, line ->
+            val lineAnimatorSet = AnimatorSet()
+            val cellAnimators = mutableListOf<Animator>()
+
+            line.cellsList.filter { it.currentIteration < MAX_ITERATIONS  }
+                .forEachIndexed { cellIndex, cellObj ->
+
+                    val cellAnimator = ValueAnimator.ofInt(0, MAX_ITERATIONS)
+                    cellAnimator.duration = 800
+
+                    if (withDelay) {
+                        val delayValue = ((lineIndex + 1) + cellIndex) * 50L
+                        cellAnimator.startDelay = delayValue
+                    }
+
+                    cellAnimator.addUpdateListener {
+                        cellObj.currentIteration = it.animatedValue as Int
+                        if (cellObj.currentIteration == MAX_ITERATIONS) {
+                            line.lastTimeAnimationPlayed = System.currentTimeMillis()
+                            line.isAnimationFinished = true
+                        }
+                        invalidate()
+                    }
+
+                    cellAnimators.add(cellAnimator)
+                }
+
+            lineAnimatorSet.playTogether(cellAnimators)
+            animatorSets.add(lineAnimatorSet)
+        }
+
+        val mainAnimatorSet = AnimatorSet()
+        mainAnimatorSet.playTogether(animatorSets as List<Animator>?)
+        mainAnimatorSet.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(p0: Animator) {
+                isAnimating = true
+            }
+
+            override fun onAnimationEnd(p0: Animator) {
+                isAnimating = false
+                checkCompletedIterationForAllLines()
+            }
+
+            override fun onAnimationCancel(p0: Animator) {
+            }
+
+            override fun onAnimationRepeat(p0: Animator) {
+            }
+        })
+
+        mainAnimatorSet.start()
+    }*/
+    fun shuffleText(reset: Boolean, withDelay: Boolean) {
+        if (reset) reset()
+        delayCells = withDelay
+        filterLinesToDraw()
+        invalidate()
+    }
+
+    /*fun shuffleText(reset: Boolean, withDelay: Boolean) {
+        if (reset) reset()
+        filterLinesToDraw()
+        invalidate()
         if (isAnimating) return
 
         val numberOfLinesToAnimate = lines.filter { it.isVisible }
@@ -423,7 +658,7 @@ class TextShufflerView : View {
                                 }
                             }
                         }
-                       /* val elapsedTime = System.currentTimeMillis() - startTime
+                        *//*val elapsedTime = System.currentTimeMillis() - startTime
                         if (withDelay) {
                             val delayValue = ((lineIndex) + cellIndex) * staggerDuration
 
@@ -435,14 +670,14 @@ class TextShufflerView : View {
                                 }
                                 invalidate()
                             }
-                        }*/ else {
+                        } else {
                             cellObj.currentIteration = cellObj.currentIteration + 1
                             if (cellObj.currentIteration == MAX_ITERATIONS) {
                                 line.lastTimeAnimationPlayed = System.currentTimeMillis()
                                 line.isAnimationFinished = true
                             }
                             invalidate()
-                        }
+                        }*//*
                     }
             }
         }
@@ -463,7 +698,7 @@ class TextShufflerView : View {
             }
         })
         animator.start()
-    }
+    }*/
 
     private fun checkCompletedIterationForAllLines() {
         var shouldContinueAnimation = false
@@ -484,6 +719,9 @@ class TextShufflerView : View {
         return (currentTimeMillis < (line.lastTimeAnimationPlayed + ANIMATION_SLEEP_TIME))
     }
 
+    private fun isLineAnimationInProgress(line: LineObj): Boolean {
+        return line.animationStartTime > 0 && line.lastTimeAnimationPlayed <= 0
+    }
 
     private fun isLineVisible(x: Int, y: Int): Boolean {
         if (!inScrollView) return true
@@ -497,28 +735,22 @@ class TextShufflerView : View {
 
     private fun reset() {
         lines.forEach { line ->
-            line.currentIteration = 0
-            line.previousIteration = 0
-            line.isAnimationFinished = false
-            line.lastTimeAnimationPlayed = -1
-            line.cellsList.forEach {
-                it.currentIteration = 0
-                it.previousIteration = 0
-                it.delayed = false
-                it.currentCharacter = ' '
-            }
+            resetIterationForLine(line)
         }
     }
 
 
     private fun resetIterationForLine(line: LineObj) {
+        line.currentIteration = 0
+        line.previousIteration = -1
         line.isAnimationFinished = false
         line.animationStartTime = -1L
         line.lastTimeAnimationPlayed = -1
         line.cellsList.forEach {
-            it.delayed = false
             it.currentIteration = 0
-            it.previousIteration = 0
+            it.previousIteration = -1
+            it.delayed = false
+            it.currentCharacter = ' '
         }
     }
 

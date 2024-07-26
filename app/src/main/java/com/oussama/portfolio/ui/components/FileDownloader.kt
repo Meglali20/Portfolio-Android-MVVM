@@ -6,6 +6,7 @@ import android.os.Environment
 import android.webkit.MimeTypeMap
 import androidx.core.net.toUri
 import com.oussama.portfolio.R
+import timber.log.Timber
 import java.net.URI
 import java.net.URISyntaxException
 
@@ -18,12 +19,13 @@ class FileDownloader(
 
     override fun downloadFile(url: String): Long {
         val fileName = extractFileNameFromUrl(url)
+        val mimeType = getMimeType(url)
+        Timber.d("Downloading file $fileName as type $mimeType from url $url")
         val request = DownloadManager.Request(url.toUri())
             .setMimeType(getMimeType(url))
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI)
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             .setTitle(String.format(context.getString(R.string.downloadingTitle), fileName))
-            .addRequestHeader("Authorization", "Bearer <token>")
             .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName)
         return downloadManager.enqueue(request)
     }
