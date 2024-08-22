@@ -2,6 +2,11 @@ name: Build Release APK
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'README.md'
+      - '**/README.md'
+      - 'firebase/**'
+      - 'screenshots/**'
   pull_request:
     branches: [ main ]
 
