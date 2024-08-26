@@ -18,7 +18,7 @@ A portfolio app based on MVVM architecture, custom views and Firebase.
 - **Custom Views:**
 
   - [WavesTextView](#wavestextview) reproduces the animation effect used on [Midjourney's](https://midjourney.com) landing page.
-  - [TextShufflerView](#textshufflerview) Inspired by [TypeShuffleAnimation](https://tympanus.net/Development/TypeShuffleAnimation/).
+  - [TextShufflerView](#textshufflerview) (View and Jetpack Compose) Inspired by [TypeShuffleAnimation](https://tympanus.net/Development/TypeShuffleAnimation/).
   - [BottomNavigationBar](#bottomnavigationbar) mixes TextShufflerView with some animated drawable effects.
   - [ImagePiecesView](#imagepiecesview) Inspired by [AnimatedImagePieces](https://tympanus.net/Development/AnimatedImagePieces/).
   - [GLImageView](#glimageview) based on [Shadertoy](https://www.shadertoy.com/view/lssGDj) with some modifications.
@@ -35,7 +35,7 @@ reproduces the animation effect used on [Midjourney's](https://midjourney.com) l
 </p>
 
 ## TextShufflerView 
-Inspired by [TypeShuffleAnimation](https://tympanus.net/Development/TypeShuffleAnimation/).
+Can be used in XML and a version for Jetpack Compose Inspired by [TypeShuffleAnimation](https://tympanus.net/Development/TypeShuffleAnimation/).
 <p align="center">
 <img src="/screenshots/text_shuffler.gif" width="33%"/>
 <img src="/screenshots/text_shuffler2.gif" width="33%"/>
