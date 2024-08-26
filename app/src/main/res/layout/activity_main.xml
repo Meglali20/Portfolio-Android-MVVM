@@ -9,11 +9,11 @@
     <com.oussama.portfolio.ui.components.bottomnavigationbar.BottomNavigationBar
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="?attr/colorSurface"
+        android:layout_height="80dp"
+        android:background="?attr/colorSurfaceContainer"
         android:elevation="10dp"
-        app:activeItemColor="?attr/colorPrimary"
-        app:inactiveItemColor="?attr/colorSecondaryContainer"
+        app:activeItemColor="?attr/colorOnSecondaryContainer"
+        app:inactiveItemColor="?attr/colorOnSurface"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 

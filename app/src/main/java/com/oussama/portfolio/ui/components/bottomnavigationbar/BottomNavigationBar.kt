@@ -2,16 +2,21 @@ package com.oussama.portfolio.ui.components.bottomnavigationbar
 
 import android.animation.LayoutTransition
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.MenuInflater
+import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupMenu
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.core.content.ContextCompat
 import com.oussama.portfolio.BaseApplication
 import com.oussama.portfolio.R
 import com.oussama.portfolio.databinding.BottomNavigationBarItemBinding
@@ -112,6 +117,12 @@ class BottomNavigationBar : LinearLayout {
         val glitchDrawable =
             getChildAt(activeItemIndex).findViewById<ImageView>(R.id.itemDrawable).drawable as GlitchDrawable
         glitchDrawable.setTint(activeItemTintColor)
+        /*val drawableContainer = getChildAt(activeItemIndex).findViewById<FrameLayout>(R.id.drawableContainer)
+        val typedValue = TypedValue()
+        context.theme.resolveAttribute(R.attr.colorSecondaryContainer, typedValue, true)
+        drawableContainer.background = ContextCompat.getDrawable(context, R.drawable.background_15_radius)
+        drawableContainer.backgroundTintList = ColorStateList.valueOf(typedValue.data)*/
+        getChildAt(activeItemIndex).findViewById<View>(R.id.drawableBackgroundView).animate().scaleX(1f).start()
         val textShufflerView = getChildAt(activeItemIndex).findViewById<TextShufflerView>(R.id.itemTitle)
         if (textShufflerView.visibility != VISIBLE)
             textShufflerView.visibility = VISIBLE
@@ -131,6 +142,9 @@ class BottomNavigationBar : LinearLayout {
         )
         if (getChildAt(activeItemIndex).findViewById<TextShufflerView>(R.id.itemTitle).visibility != GONE)
             getChildAt(activeItemIndex).findViewById<TextShufflerView>(R.id.itemTitle).visibility = GONE
+       /* val drawableContainer = getChildAt(activeItemIndex).findViewById<FrameLayout>(R.id.drawableContainer)
+        drawableContainer.background = null*/
+        getChildAt(activeItemIndex).findViewById<View>(R.id.drawableBackgroundView).animate().scaleX(0f).start()
         getChildAt(activeItemIndex).background = null
     }
 

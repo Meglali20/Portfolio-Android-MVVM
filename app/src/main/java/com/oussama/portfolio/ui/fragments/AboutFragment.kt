@@ -60,6 +60,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
                                 isFirstResource: Boolean
                             ): Boolean {
                                 binding.glImageTextureView.setBitmapImage(resource)
+                                binding.glImageTextureView.alpha = 1f
                                 return false
                             }
                         })

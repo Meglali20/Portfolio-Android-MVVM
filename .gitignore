@@ -27,3 +27,5 @@
 .cxx
 local.properties
 /app/src/test
+/material3-colors/
+/material3-colors/node_modules/

@@ -11,12 +11,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:layout_gravity="center"
+        android:layout_margin="5dp"
         android:background="@drawable/background_rounded"
         android:backgroundTint="?attr/colorSecondaryContainer"
-        android:paddingVertical="10dp"
         android:orientation="vertical"
+        android:paddingVertical="10dp"
         tools:ignore="UselessParent">
 
         <LinearLayout
@@ -150,43 +150,60 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="10dp"
+                        app:pieBorderColor="@color/white"
                         app:pieColorPrimary="?attr/colorPrimary"
                         app:pieColorSecondary="?attr/colorSecondary"
-                        app:pieColorTertiary="?attr/colorTertiary"
-                        app:pieBorderColor="@color/white"/>
+                        app:pieColorTertiary="?attr/colorTertiary" />
 
                     <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/colorSchemeSystemSettings"
-                        android:textSize="14sp"
                         android:textColor="?attr/colorOnSecondaryContainer"
+                        android:textSize="14sp"
                         app:autoAnimate="true" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginStart="15dp"
+                    android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.oussama.portfolio.ui.components.PieView
-                        android:id="@+id/randomColorsPie"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginHorizontal="10dp"
-                        app:pieColorPrimary="?attr/colorPrimary"
-                        app:pieColorSecondary="?attr/colorSecondary"
-                        app:pieColorTertiary="?attr/colorTertiary"
-                        app:pieBorderColor="@color/white"/>
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp">
+
+                        <com.oussama.portfolio.ui.components.PieView
+                            android:id="@+id/randomColorsPie"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginHorizontal="10dp"
+                            app:pieBorderColor="@color/white"
+                            app:pieColorPrimary="?attr/colorPrimary"
+                            app:pieColorSecondary="?attr/colorSecondary"
+                            app:pieColorTertiary="?attr/colorTertiary" />
+
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/shape_circle"
+                            android:backgroundTint="#54000000"
+                            android:fontFamily="@font/jet_brains_mono_bold"
+                            android:gravity="center"
+                            android:text="\?"
+                            android:textSize="26sp" />
+                    </FrameLayout>
 
                     <com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/colorSchemeRandomSettings"
-                        android:textSize="14sp"
                         android:textColor="?attr/colorOnSecondaryContainer"
+                        android:textSize="14sp"
                         app:autoAnimate="true" />
                 </LinearLayout>
 

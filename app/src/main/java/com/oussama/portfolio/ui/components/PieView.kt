@@ -11,6 +11,11 @@ import com.oussama.portfolio.R
 
 class PieView : View {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val strokePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        strokeWidth = 2f
+        style = Paint.Style.STROKE
+        strokeCap = Paint.Cap.ROUND
+    }
     private lateinit var colors: List<Int>
     private val angles = floatArrayOf(120f, 120f, 120f)
     private val rectF = RectF()
@@ -30,6 +35,7 @@ class PieView : View {
         val colorTertiary = attributes.getColor(R.styleable.PieView_pieColorTertiary, Color.BLUE)
         borderColor = attributes.getColor(R.styleable.PieView_pieBorderColor, Color.BLACK)
         colors = listOf(colorSecondary, colorPrimary, colorTertiary)
+        strokePaint.color = borderColor
         attributes.recycle()
     }
 
@@ -49,7 +55,7 @@ class PieView : View {
         val centerY = height / 2f
         paint.color = borderColor
         canvas.drawCircle(centerX, centerY, Math.min(centerX, centerY), paint)
-        val radius = Math.min(centerX, centerY) - 0.5f
+        val radius = Math.min(centerX, centerY) - 1f
         rectF.left = centerX - radius
         rectF.top = centerY - radius
         rectF.right = centerX + radius
@@ -58,6 +64,7 @@ class PieView : View {
         for (i in colors.indices) {
             paint.color = colors[i]
             canvas.drawArc(rectF, startAngle, angles[i], true, paint)
+            canvas.drawArc(rectF, startAngle, angles[i], true, strokePaint)
             startAngle += angles[i]
         }
     }

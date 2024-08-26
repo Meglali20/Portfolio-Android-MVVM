@@ -105,6 +105,8 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
             colorTertiary = colorTertiary
         )
         binding.colorSchemeSettingsContainer.visibility = View.VISIBLE
+        binding.systemDynamicColorsPie.animate().rotation(360f).setDuration(1200).start()
+        binding.randomColorsPie.animate().rotation(360f).setDuration(1200).start()
 
     }
 

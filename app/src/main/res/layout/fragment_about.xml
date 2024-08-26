@@ -30,7 +30,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_margin="10dp"
-                app:backgroundColor="?attr/colorSurface" />
+                android:alpha="0"
+                app:backgroundColor="?attr/colorSurface"
+                tools:alpha="1"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
