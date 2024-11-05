@@ -1,4 +1,4 @@
-package com.oussama.portfolio.ui.components.glimageview
+package com.oussama.portfolio.ui.components.asciiimage
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -13,7 +13,7 @@ import javax.microedition.khronos.egl.EGLContext
 import javax.microedition.khronos.egl.EGLDisplay
 
 @SuppressLint("ClickableViewAccessibility")
-class GLImageSurfaceView : GLSurfaceView {
+class AsciiGLImageSurfaceView : GLSurfaceView {
     private val imageRenderer: ImageRenderer
 
     constructor(context: Context) : this(context, null)

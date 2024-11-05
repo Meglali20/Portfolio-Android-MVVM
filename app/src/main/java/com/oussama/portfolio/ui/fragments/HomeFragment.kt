@@ -13,6 +13,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.FutureTarget
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.oussama.portfolio.BaseApplication
 import com.oussama.portfolio.data.DataError
 import com.oussama.portfolio.data.models.AboutMeModel
 import com.oussama.portfolio.databinding.FragmentHomeBinding
@@ -21,6 +22,7 @@ import com.oussama.portfolio.utils.BitmapUtils
 import com.oussama.portfolio.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -46,62 +48,63 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), View.OnTouchListener {
                     loadImages(aboutMeModel.data)
                 }
             } else {
-                Timber.e("Error fetching aboutMe ${DataError.getErrorMessage(requireContext(), aboutMeModel.errorCode!!)} ")
-                Toast.makeText(requireContext(), DataError.getErrorMessage(requireContext(), aboutMeModel.errorCode), Toast.LENGTH_LONG).show()
+                Timber.e(
+                    "Error fetching aboutMe ${
+                        DataError.getErrorMessage(
+                            requireContext(),
+                            aboutMeModel.errorCode!!
+                        )
+                    } "
+                )
+                Toast.makeText(
+                    requireContext(),
+                    DataError.getErrorMessage(requireContext(), aboutMeModel.errorCode),
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
         portfolioViewModel.fetchAboutMe(Locale.getDefault().language)
     }
 
     private suspend fun loadImages(aboutMeModel: AboutMeModel) {
-        val backgroundBitmap: Bitmap
-        val foregroundBitmap: Bitmap
-
+        var backgroundBitmap: Bitmap?
+        var foregroundBitmap: Bitmap?
         withContext(Dispatchers.IO) {
-            backgroundBitmap =
-                requestImage(aboutMeModel.media[if (Utils.isNightMode(requireContext())) 1 else 2].imageUrl).get()
-            foregroundBitmap = requestImage(aboutMeModel.media[0].imageUrl).get()
+            while (true) {
+                if (BaseApplication.INSTANCE.networkConnectivity.isConnected()) {
+                    try {
+                        backgroundBitmap =
+                            requestImage(aboutMeModel.media[if (Utils.isNightMode(requireContext())) 1 else 2].imageUrl)
+                        foregroundBitmap = requestImage(aboutMeModel.media[0].imageUrl)
+                        break
+                    } catch (_: Exception) {
+                        Timber.e("Image loading failed, retrying in 5 seconds...")
+                    }
+                } else
+                    Timber.e("No internet connection, retrying in 5 seconds...")
+                delay(5000)
+            }
         }
 
         withContext(Dispatchers.Main) {
-            if (!BitmapUtils.isEmptyBitmap(backgroundBitmap) && !BitmapUtils.isEmptyBitmap(
-                    foregroundBitmap
-                )
-            )
-                binding.imagePieces.setImages(
-                    foregroundImage = foregroundBitmap,
-                    backgroundImage = backgroundBitmap
-                )
+            if (foregroundBitmap != null && backgroundBitmap != null)
+                if (!BitmapUtils.isEmptyBitmap(backgroundBitmap) && !BitmapUtils.isEmptyBitmap(
+                        foregroundBitmap
+                    )
+                ) {
+                    binding.imagePieces.setImages(
+                        foregroundImage = foregroundBitmap!!,
+                        backgroundImage = backgroundBitmap!!
+                    )
+                }
         }
     }
 
-    private fun requestImage(url: String): FutureTarget<Bitmap> {
+    private fun requestImage(url: String): Bitmap {
         return Glide.with(requireContext())
             .asBitmap()
-            .listener(object : RequestListener<Bitmap?> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Bitmap?>,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    return false
-                }
-
-                override fun onResourceReady(
-                    resource: Bitmap,
-                    model: Any,
-                    target: Target<Bitmap?>?,
-                    dataSource: DataSource,
-                    isFirstResource: Boolean
-                ): Boolean {
-
-                    return false
-                }
-            })
             .load(url)
-            .submit()
-
+            .submit().get()
     }
 
 

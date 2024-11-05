@@ -21,7 +21,7 @@ A portfolio app based on MVVM architecture, custom views and Firebase.
   - [TextShufflerView](#textshufflerview) (View and Jetpack Compose) Inspired by [TypeShuffleAnimation](https://tympanus.net/Development/TypeShuffleAnimation/).
   - [BottomNavigationBar](#bottomnavigationbar) mixes TextShufflerView with some animated drawable effects.
   - [ImagePiecesView](#imagepiecesview) Inspired by [AnimatedImagePieces](https://tympanus.net/Development/AnimatedImagePieces/).
-  - [GLImageView](#glimageview) based on [Shadertoy](https://www.shadertoy.com/view/lssGDj) with some modifications.
+  - [AsciiImage](#asciiimage) (View and Jetpack Compose) based on [Shadertoy](https://www.shadertoy.com/view/lssGDj) with some modifications.
 
 ## Multiple Language Support
 The app supports multiple languages. To add data for each language, use the provided python code that would insert the data for each language and uploads the assets into Firebase (check the language_key.json.template file to see what you need to fill) each language must be in a json file in the lang directory, the admin directory would contain the serviceAccountKey for Firebase and a config.py containing DATABASE_URL and STORAGE_BUCKET
@@ -58,8 +58,8 @@ Inspired by [AnimatedImagePieces](https://tympanus.net/Development/AnimatedImage
 <img src="/screenshots/image_pieces3.gif" width="33%"/>
 </p>
 
-## GLImageView 
-Based on [Shadertoy](https://www.shadertoy.com/view/lssGDj) with some modifications.
+## AsciiImage 
+Can be used in XML and a version for Jetpack Compose based on [Shadertoy](https://www.shadertoy.com/view/lssGDj) with some modifications.
 <p align="center">
 <img src="/screenshots/glimage1.gif" width="33%"/>
 <img src="/screenshots/glimage2.gif" width="33%"/>

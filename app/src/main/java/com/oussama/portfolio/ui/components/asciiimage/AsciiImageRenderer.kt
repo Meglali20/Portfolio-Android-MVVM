@@ -1,4 +1,4 @@
-package com.oussama.portfolio.ui.components.glimageview
+package com.oussama.portfolio.ui.components.asciiimage
 
 import android.animation.Animator
 import android.animation.AnimatorSet

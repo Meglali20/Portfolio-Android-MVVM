@@ -119,6 +119,7 @@ class ImagePiecesSurfaceView(context: Context, attrs: AttributeSet) : SurfaceVie
         startDrawing()
         val animator = ValueAnimator.ofInt(10, 1)
         animator.addUpdateListener {
+            if(backgroundImageBitmap!= null && backgroundImageBitmap!!.isRecycled) return@addUpdateListener
             blurredBackgroundImageBitmap = BitmapUtils.fastBlur(
                 backgroundImageBitmap?.copy(Bitmap.Config.ARGB_8888, true),
                 0.5f,

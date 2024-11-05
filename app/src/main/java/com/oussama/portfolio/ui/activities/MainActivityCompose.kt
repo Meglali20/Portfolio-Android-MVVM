@@ -1,13 +1,13 @@
 package com.oussama.portfolio.ui.activities
 
+import android.graphics.Bitmap
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,26 +16,25 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.core.content.res.ResourcesCompat
-import com.oussama.portfolio.R
-import com.oussama.portfolio.ui.components.textshufflerview.TextShufflerCompose
-import com.oussama.portfolio.ui.components.textshufflerview.TextShufflerView
-import com.oussama.portfolio.ui.components.textshufflerview.spToPx
+import com.bumptech.glide.Glide
+import com.oussama.portfolio.ui.components.asciiimage.AsciiImage
 import com.oussama.portfolio.ui.theme.PortfolioTheme
-import com.oussama.portfolio.utils.Utils.Companion.spToPx
-import com.oussama.portfolio.utils.dummyText
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MainActivityCompose : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,10 +47,14 @@ class MainActivityCompose : ComponentActivity() {
         textShufflerView.setText(dummyText)
         textShufflerView.shuffleText(reset = true, withDelay = true)*/
         setContent {
+            val context = LocalContext.current
+            var image by remember { mutableStateOf<Bitmap?>(null) }
             PortfolioTheme(darkTheme = true, true) {
                 // A surface container using the 'background' color from the theme
                 // R.layout.activity_main
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Box(modifier = Modifier
+                    .background(color = MaterialTheme.colorScheme.surface)
+                    .fillMaxSize(), contentAlignment = Alignment.Center) {
                     val scrollState = rememberScrollState()
                     var shuffleTextCallback: (reset: Boolean, withDelay: Boolean) -> Unit =
                         { _, _ -> }
@@ -63,9 +66,11 @@ class MainActivityCompose : ComponentActivity() {
                             shuffleTextCallback( true,  true)
                         }, 50)
                     }*/
-                    Column(modifier = Modifier
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.White)
                         .verticalScroll(scrollState)
                         .clickable(
                             indication = null,
@@ -73,14 +78,25 @@ class MainActivityCompose : ComponentActivity() {
                         ) {
                             shuffleTextCallback(true, true)
                         }) {
-                        TextShufflerCompose(
+                        /*TextShufflerCompose(
                             modifier = Modifier
                                 .fillMaxSize(),
                             typeface = ResourcesCompat.getFont(LocalContext.current, R.font.jet_brains_mono_bold),
                             textSize = 16.spToPx().toFloat(),
                             text = dummyText,
                             shuffleText = { shuffleTextCallback = it }
-                        )
+                        )*/
+                        LaunchedEffect(Unit) {
+                                image = withContext(Dispatchers.IO) {
+                                    Glide.with(context)
+                                        .asBitmap()
+                                        .load("https://tympanus.net/Development/DeveloperDesignerPageLayout/img/normal.jpg")
+                                        .submit().get()
+                                }
+                        }
+
+                       if(image != null)
+                            AsciiImage(image!!)
 
                     }
                 }

@@ -25,7 +25,7 @@
             android:visibility="gone"
             tools:visibility="visible">
 
-            <com.oussama.portfolio.ui.components.glimageview.GLImageSurfaceView
+            <com.oussama.portfolio.ui.components.asciiimage.AsciiGLImageSurfaceView
                 android:id="@+id/glImageTextureView"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"

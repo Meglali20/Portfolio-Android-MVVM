@@ -14,6 +14,7 @@ import com.oussama.portfolio.data.DataStoreRepository
 import com.oussama.portfolio.utils.COLORSCHEME_DATASTORE_KEY
 import com.oussama.portfolio.utils.COLORSCHEME_RANDOM
 import com.oussama.portfolio.utils.LOCALE_DATASTORE_KEY
+import com.oussama.portfolio.utils.NetworkConnectivity
 import com.oussama.portfolio.utils.THEME_DATASTORE_KEY
 import com.oussama.portfolio.utils.Utils
 import dagger.hilt.android.HiltAndroidApp
@@ -27,6 +28,8 @@ class BaseApplication : Application() {
 
     @Inject
     lateinit var dataStoreRepository: DataStoreRepository
+    @Inject
+    lateinit var networkConnectivity: NetworkConnectivity
 
     var colorCombination: List<Int> = pickRandomColorCombination()
     var configChanged = false

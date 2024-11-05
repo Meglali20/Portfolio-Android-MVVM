@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>-->
 
-    <com.oussama.portfolio.ui.components.glimageview.GLImageSurfaceView
+    <com.oussama.portfolio.ui.components.asciiimage.AsciiGLImageSurfaceView
         android:id="@+id/glImageTextureView"
         android:layout_width="match_parent"
         android:layout_height="600dp"
